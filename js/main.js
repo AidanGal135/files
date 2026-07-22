@@ -125,7 +125,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var formData = new FormData(form);
 
-      fetch("https://formsubmit.co/ajax/affinitytrinityttv@gmail.com", {
+      // Remove empty file attachments if user didn't select a file
+      var resumeInput = document.getElementById('resume');
+      if (resumeInput && (!resumeInput.files || resumeInput.files.length === 0)) {
+        formData.delete('attachment');
+      }
+
+      // POST to standard endpoint with JSON Accept header for AJAX response
+      fetch("https://formsubmit.co/affinitytrinityttv@gmail.com", {
         method: "POST",
         headers: {
           'Accept': 'application/json'
@@ -133,6 +140,9 @@ document.addEventListener('DOMContentLoaded', function () {
         body: formData
       })
         .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
           return response.json();
         })
         .then(function (data) {
@@ -142,7 +152,13 @@ document.addEventListener('DOMContentLoaded', function () {
             success.scrollIntoView({ behavior: 'smooth', block: 'center' });
           }
           form.reset();
-          toggleResumeUpload(); // Reset visibility after form clears
+
+          // Reset file preview badge
+          var filePreview = document.getElementById('file-preview');
+          if (filePreview) filePreview.style.display = 'none';
+
+          // Reset resume upload wrapper visibility
+          toggleResumeUpload();
         })
         .catch(function (error) {
           console.error('Error submitting form:', error);
