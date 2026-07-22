@@ -466,7 +466,7 @@ section { padding: 2rem 0; }
 .avatar {
   width: 108px;
   height: 108px;
-  margin: 0 auto 1.3rem;
+  margin: 0 0;
   border-radius: 50%;
   background: radial-gradient(circle at 32% 28%, var(--navy-700), var(--navy-950));
   border: 1px solid var(--brass-light);
@@ -601,13 +601,12 @@ section { padding: 2rem 0; }
 .content-block ul.check-list li ul.sublist li {
   padding-left: 1.2rem;
   margin-bottom: 0.4rem;
-  font-weight: 600;
 }
 .content-block ul.check-list li ul.sublist li::before {
-  content: "■"; /* Use a solid square or "•" bullet */
-  font-size: 0.65rem;
+  content: "•"; /* Use a solid square or "•" bullet */
+  font-size: 1.7rem;
   left: 0;
-  top: 2px;
+  top: -8.5px;
   color: var(--brass);
 }
 
@@ -615,7 +614,7 @@ section { padding: 2rem 0; }
   background: var(--white);
   border: 1px solid var(--line-soft);
   border-left: 3px solid var(--brass);
-  padding: 2rem;
+  padding: 1rem 2rem 2rem;
 }
 .sidebar-card h4 { margin-bottom: 1rem; }
 .sidebar-card ul li {
@@ -647,15 +646,26 @@ section { padding: 2rem 0; }
 .process-step h4 { margin-bottom: 0rem; }
 .process-step p { color: var(--ink-soft); font-size: 0.94rem; margin-bottom: -0.5rem;}
 
+/* Old Value Item and grid*/
 /* Values grid (About page) */
-.values-grid {
+/* .values-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1.6rem;
+} */
+/* .value-item { padding: 0rem 0.5rem 0; } */
+/* .value-item .mark { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 1.4rem; } */
+/* .value-item h4 { margin: 0.7rem 0 0.5rem; } */
+/* .value-item p { font-size: 0.9rem; color: var(--ink-soft); } */
+
+/* New Value Item and Grid */
+.values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+.value-item {
+  display: flex; gap: 1rem; align-items: flex-start;
+  background: var(--white); border: 1px solid var(--line-soft); padding: 1.5rem;
 }
-.value-item { padding: 0rem 0.5rem 0; }
-.value-item .mark { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 1.4rem; }
-.value-item h4 { margin: 0.7rem 0 0.5rem; }
+.value-item .mark { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 1.4rem; margin-top: -0.1rem;}
+.value-item h4 { font-size: 0.98rem; margin-bottom: 0.3rem; }
 .value-item p { font-size: 0.9rem; color: var(--ink-soft); }
 
 /* Timeline (About) */
@@ -789,7 +799,7 @@ section { padding: 2rem 0; }
   }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .service-layout { grid-template-columns: 1fr; }
-  .values-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
   .perk-grid { grid-template-columns: 1fr; }
   .content-block { max-width: 100%; }
@@ -806,7 +816,7 @@ section { padding: 2rem 0; }
   .has-dropdown.open .dropdown { display: block; }
   .nav-cta { margin: 0.8rem 0 0; text-align: center; justify-content: center; }
   .nav-toggle { display: block; }
-  .card-grid, .team-grid, .values-grid { grid-template-columns: 1fr; }
+  .card-grid, .team-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
   .hero-amp { font-size: 22rem; }
   .form-row { grid-template-columns: 1fr; }
