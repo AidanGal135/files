@@ -114,59 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-
-  // =========================================================
-  // 4. CONTACT FORM SUBMISSION & RESUME ATTACHMENT
-  // =========================================================
-  var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault(); // Prevents standard page redirect
-
-      var formData = new FormData(form);
-
-      // Remove empty file attachments if user didn't select a file
-      var resumeInput = document.getElementById('resume');
-      if (resumeInput && (!resumeInput.files || resumeInput.files.length === 0)) {
-        formData.delete('attachment');
-      }
-
-      // POST to standard endpoint with JSON Accept header for AJAX response
-      fetch("https://formsubmit.co/affinitytrinityttv@gmail.com", {
-        method: "POST",
-        headers: {
-          'Accept': 'application/json'
-        },
-        body: formData
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(function (data) {
-          var success = document.getElementById('form-success');
-          if (success) {
-            success.classList.add('visible');
-            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          }
-          form.reset();
-
-          // Reset file preview badge
-          var filePreview = document.getElementById('file-preview');
-          if (filePreview) filePreview.style.display = 'none';
-
-          // Reset resume upload wrapper visibility
-          toggleResumeUpload();
-        })
-        .catch(function (error) {
-          console.error('Error submitting form:', error);
-          alert('There was a problem sending your message. Please try again.');
-        });
-    });
-  }
-
   // Resume File Upload & Preview Handler
   var fileNameSpan = document.getElementById('file-name');
   var fileRemoveBtn = document.getElementById('file-remove');
@@ -187,6 +134,16 @@ document.addEventListener('DOMContentLoaded', function () {
       resumeInput.value = '';
       filePreview.style.display = 'none';
     });
+  }
+
+  // Show success message if redirected back after form submission
+  var urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('submitted') === 'true') {
+    var success = document.getElementById('form-success');
+    if (success) {
+      success.classList.add('visible');
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
 });
