@@ -98,7 +98,7 @@
         Thank you — your message has been received. A partner will be in touch within one business day.
       </div>
 
-      <form target="_blank" id="contact-form" action="https://formsubmit.co/affinitytrinityttv@gmail.com" method="POST">
+      <form target="_blank" id="contact-form" action="https://formsubmit.co/affinitytrinityttv@gmail.com" method="POST" enctype="multipart/form-data">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Full name</label>
@@ -129,10 +129,31 @@
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="5" placeholder="Tell us about your needs..."></textarea>
         </div>
+
+        <div class="resume-upload-wrapper" id="resume-upload-wrapper">
+          <div class="form-group" id="resume-upload-group">
+              <!-- Clickable label element wrapping the hidden file input -->
+            <label for="resume" class="btn-upload" style="align-items:center; display:flex; gap:0.5rem; cursor:pointer;">
+              <img class="upload-icon" src="svg/upload_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" alt="Upload Icon" style="display:inline-block;"/>
+              <span>Upload Résumé</span>
+              <input type="file" id="resume" name="attachment" accept=".pdf,.doc,.docx" hidden>
+            </label>
+
+            <!-- Dynamic File Selected Preview Bar -->
+            <div id="file-preview" class="file-preview" style="display: none;">
+              <span class="file-name" id="file-name">filename.pdf</span>
+              <button type="button" class="file-remove-btn" id="file-remove" aria-label="Remove file">&times;</button>
+            </div>
+
+            <p class="form-note" style="margin: 0; color: var(--ink-soft); font-style:italic;">If applying for a position, please attach your resume (PDF or Word format).</p>
+
+          </div>
+        </div>
+        
         <input type="hidden" name="_subject" value="New Contact Form Submission">
         <input type="hidden" name="_captcha" value="true">
         <input type="hidden" name="_template" value="box">
-        <button type="submit" class="btn btn-primary">Send Message</button>
+        <button type="submit" class="btn-submit">Send Message</button>
       </form>
     </div>
   </div>

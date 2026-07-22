@@ -700,7 +700,7 @@ section { padding: 2rem 0; }
 .info-card p { color: var(--ink-soft); font-size: 0.92rem; }
 
 .form-group { margin-bottom: 1.4rem; }
-.form-group label {
+.form-group label:not(.btn-upload) {
   display: block;
   font-family: var(--font-eyebrow);
   font-size: 0.78rem;
@@ -720,6 +720,7 @@ section { padding: 2rem 0; }
   color: var(--ink);
   border-radius: var(--radius);
 }
+
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
   outline: none;
   border-color: var(--brass);
@@ -736,29 +737,122 @@ section { padding: 2rem 0; }
 }
 .form-success.visible { display: block; }
 
-.map-plate {
-  height: 300px;
-  background: var(--navy-950);
-  position: relative;
-  overflow: hidden;
+/* Submit Button */
+.btn-submit {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
-}
-.map-plate span {
+  gap: 0.6rem;
+  width: 100%;
+  background: var(--navy-950);
+  color: var(--brass-light);
+  padding: 0.85rem 1rem;
   font-family: var(--font-eyebrow);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.5);
-  text-transform: uppercase;
-  z-index: 1;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius);
+  border: 1px solid var(--navy-950);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
 }
-.map-plate::before {
-  content: "";
-  position: absolute; inset: 0;
-  background-image: repeating-linear-gradient(0deg, rgba(216,189,139,0.08) 0 1px, transparent 1px 40px),
-                     repeating-linear-gradient(90deg, rgba(216,189,139,0.08) 0 1px, transparent 1px 40px);
+
+.btn-submit:hover {
+  background: var(--navy-700);
+  border-color: var(--brass-light);
+}
+
+/* Upload Button Styles */
+.btn-upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: var(--brass);
+  color: var(--navy-950);
+  padding: 0.85rem 1rem;
+  font-family: var(--font-eyebrow);
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-soft);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.btn-upload:hover {
+  background: var(--brass-light);
+}
+
+.btn-upload .upload-icon {
+  transition: transform 0.2s ease;
+}
+
+.btn-upload:hover .upload-icon {
+  transform: translateY(-2px);
+}
+
+/* File Selected / Delete Badge Bar */
+.file-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.6rem 0.9rem;
+  margin-top: 0.6rem;
+  font-size: 0.88rem;
+  color: var(--navy-950);
+}
+
+.file-preview .file-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 85%;
+}
+
+.file-remove-btn {
+  background: none;
+  border: none;
+  color: var(--ink-faint);
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0 0.3rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.file-remove-btn:hover {
+  color: #c93b3b;
+}
+
+/* Smooth Expand/Collapse Wrapper for Resume Upload */
+.resume-upload-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 0.5s ease, opacity 0.5s ease, margin 0.5s ease;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+/* Expanded Active State */
+.resume-upload-wrapper.is-visible {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  margin-bottom: 1.4rem; /* Matches your standard .form-group bottom margin */
+}
+
+.resume-upload-wrapper > .form-group {
+  min-height: 0;
+  margin-bottom: 0; /* Handled by wrapper transition */
 }
 
 /* ============================================================
