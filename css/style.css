@@ -646,28 +646,6 @@ section { padding: 2rem 0; }
 .process-step h4 { margin-bottom: 0rem; }
 .process-step p { color: var(--ink-soft); font-size: 0.94rem; margin-bottom: -0.5rem;}
 
-/* Old Value Item and grid*/
-/* Values grid (About page) */
-/* .values-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.6rem;
-} */
-/* .value-item { padding: 0rem 0.5rem 0; } */
-/* .value-item .mark { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 1.4rem; } */
-/* .value-item h4 { margin: 0.7rem 0 0.5rem; } */
-/* .value-item p { font-size: 0.9rem; color: var(--ink-soft); } */
-
-/* New Value Item and Grid */
-.values-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
-.value-item {
-  display: flex; gap: 1rem; align-items: flex-start;
-  background: var(--white); border: 1px solid var(--line-soft); padding: 1.5rem;
-}
-.value-item .mark { font-family: var(--font-display); font-style: italic; color: var(--brass); font-size: 1.4rem; margin-top: -0.1rem;}
-.value-item h4 { font-size: 0.98rem; margin-bottom: 0.3rem; }
-.value-item p { font-size: 0.9rem; color: var(--ink-soft); }
-
 /* Timeline (About) */
 .timeline { border-left: 2px solid var(--line); padding-left: 2.2rem; display: grid; gap: 2.4rem; margin-top: 1rem; }
 .timeline-item { position: relative; }
@@ -866,4 +844,11 @@ section { padding: 2rem 0; }
     grid-column: 2;
   }
   .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
+  .form-group {
+    margin-bottom: 1rem; /* Reduced from 1.4rem */
+  }
+  .form-group label {
+    margin-bottom: 0.1rem; /* Reduced from 0.5rem */
+  }
+  .form-row { gap: 0rem; } /* Reduced from 1.2rem */
 }

@@ -38,18 +38,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // // Contact form — static demo submission
-  // var form = document.getElementById('contact-form');
-  // if (form) {
-  //   form.addEventListener('submit', function (e) {
-  //     e.preventDefault();
-  //     var success = document.getElementById('form-success');
-  //     if (success) {
-  //       success.classList.add('visible');
-  //       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  //     }
-  //     form.reset();
-  //   });
-  // }
+  // Contact form
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault(); // Prevents the browser from navigating away from the page
+
+      // Automatically grab all field values from the form inputs
+      var formData = new FormData(form);
+      var object = {};
+      formData.forEach(function (value, key) {
+        object[key] = value;
+      });
+      var json = JSON.stringify(object);
+
+      // Send the AJAX request using FormSubmit's AJAX endpoint
+      fetch("https://formsubmit.co/ajax/affinitytrinityttv@gmail.com", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          // Show the success message upon successful form submission
+          var success = document.getElementById('form-success');
+          if (success) {
+            success.classList.add('visible');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          form.reset();
+        })
+        .catch(function (error) {
+          console.error('Error submitting form:', error);
+          alert('There was a problem sending your message. Please try again.');
+        });
+    });
+  }
 
 });
