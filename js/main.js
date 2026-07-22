@@ -38,18 +38,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // Contact form — static demo submission
-  var form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var success = document.getElementById('form-success');
-      if (success) {
-        success.classList.add('visible');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-      form.reset();
-    });
-  }
+  // // Contact form — static demo submission
+  // var form = document.getElementById('contact-form');
+  // if (form) {
+  //   form.addEventListener('submit', function (e) {
+  //     e.preventDefault();
+  //     var success = document.getElementById('form-success');
+  //     if (success) {
+  //       success.classList.add('visible');
+  //       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  //     }
+  //     form.reset();
+  //   });
+  // }
 
 });

@@ -594,17 +594,21 @@ section { padding: 2rem 0; }
   font-weight: 700;
 }
 .content-block ul.check-list li ul.sublist {
-  margin-left: 1.2rem;
+  margin-left: 1rem;
   margin-top: 0.5rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0.5rem;
+}
+.content-block ul.check-list li ul.sublist li {
+  padding-left: 1.2rem;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
 }
 .content-block ul.check-list li ul.sublist li::before {
-  content: "•";
-  position: absolute;
-  left: 0; top: 1px;
+  content: "■"; /* Use a solid square or "•" bullet */
+  font-size: 0.65rem;
+  left: 0;
+  top: 2px;
   color: var(--brass);
-  font-weight: 700;
-  margin-right: -0.5rem;
 }
 
 .sidebar-card {
@@ -777,26 +781,79 @@ section { padding: 2rem 0; }
   .card-grid, .team-grid { grid-template-columns: repeat(2, 1fr); }
   .two-col { grid-template-columns: 1fr; }
   .stat-strip .container { grid-template-columns: 1fr; gap: 1.4rem; }
-  .stat { border-left: none; padding-left: 0; text-align: left; display: flex; align-items: baseline; gap: 0.8rem; }
+  .stat { 
+  border-left: none; 
+  padding-left: 0; 
+  text-align: center; 
+  display: block; 
+  }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .service-layout { grid-template-columns: 1fr; }
   .values-grid { grid-template-columns: repeat(2, 1fr); }
   .contact-layout { grid-template-columns: 1fr; }
   .perk-grid { grid-template-columns: 1fr; }
+  .content-block { max-width: 100%; }
+  .service-layout aside, .sidebar-card { width: 100%; }
 }
 
 @media (max-width: 760px) {
-  .main-nav { position: fixed; top: 84px; left: 0; right: 0; bottom: 0; background: var(--paper); flex-direction: column; align-items: stretch; padding: 1.5rem var(--gutter); transform: translateX(100%); transition: transform 0.25s ease; overflow-y: auto; }
+  .main-nav { position: fixed; top: 84px; left: 0; right: 0; bottom: 0; background: var(--paper); flex-direction: column; align-items: stretch; padding: 1rem var(--gutter); transform: translateX(100%); transition: transform 0.25s ease; overflow-y: auto; }
   .main-nav.open { transform: translateX(0); }
   .main-nav ul { flex-direction: column; align-items: flex-start; gap: 0; width: 100%; }
   .main-nav ul li { width: 100%; border-bottom: 1px solid var(--line-soft); }
   .main-nav a.nav-link { display: block; padding: 1.1rem 0; }
   .has-dropdown .dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 1rem; display: none; }
   .has-dropdown.open .dropdown { display: block; }
-  .nav-cta { margin: 1.2rem 0 0; }
+  .nav-cta { margin: 0.8rem 0 0; text-align: center; justify-content: center; }
   .nav-toggle { display: block; }
   .card-grid, .team-grid, .values-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 2.2rem; }
   .hero-amp { font-size: 22rem; }
   .form-row { grid-template-columns: 1fr; }
+  /* Monogram Trio fixes for mobile screens */
+  .monogram-trio {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    height: 120px; /* Provides clear vertical space so it doesn't bleed into next section */
+    align-items: center;
+  }
+  .monogram {
+    width: 80px;
+    height: 80px;
+    font-size: 1.2rem;
+  }
+  .monogram-trio .monogram:nth-child(1) { margin-right: -15px; transform: translateY(20px); }
+  .monogram-trio .monogram:nth-child(2) { transform: translateY(-20px); }
+  .monogram-trio .monogram:nth-child(3) { margin-left: -15px; transform: translateY(20px); }
+  /* Horizontal service cards on mobile */
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .service-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.2rem;
+    align-items: start;
+    padding: 1.25rem;
+  }
+  .service-card .index {
+    grid-row: 1 / span 3;
+    font-size: 1.4rem;
+    margin-bottom: 0;
+    padding-top: 0.1rem;
+  }
+  .service-card h3 {
+    grid-column: 2;
+    margin-bottom: 0.4rem;
+  }
+  .service-card p {
+    grid-column: 2;
+    margin-bottom: 0.8rem;
+  }
+  .service-card .card-link {
+    grid-column: 2;
+  }
+  .contact-layout { grid-template-columns: 1fr; gap: 2rem; }
 }
